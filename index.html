@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup and Login</title>
+
+    <style>
+        body {
+            background: lightblue;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            width: 300px;
+            margin: 100px auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Signup / Login</h2>
+
+    <input type="text" id="username"
+           placeholder="Enter Username"><br>
+
+    <input type="password" id="password"
+           placeholder="Enter Password"><br>
+
+    <button onclick="signup()">Signup</button>
+    <button onclick="login()">Login</button>
+</div>
+
+<script>
+    function signup() {
+        let user = document.getElementById("username").value;
+        let pass = document.getElementById("password").value;
+
+        if (user == "" || pass == "") {
+            alert("Enter all details");
+        }
+        else {
+            localStorage.setItem("username", user);
+            localStorage.setItem("password", pass);
+
+            alert("Signup Successful");
+        }
+    }
+
+    function login() {
+        let user = document.getElementById("username").value;
+        let pass = document.getElementById("password").value;
+
+        let savedUser = localStorage.getItem("username");
+        let savedPass = localStorage.getItem("password");
+
+        if (user == savedUser && pass == savedPass) {
+            alert("Login Successful");
+        }
+        else {
+            alert("Invalid Username or Password");
+        }
+    }
+</script>
+
+</body>
+</html>
